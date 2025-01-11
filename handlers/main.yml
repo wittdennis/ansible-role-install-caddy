@@ -1,2 +1,41 @@
 ---
-# handlers file for role_remplate
+- name: Extract Caddy
+  ansible.builtin.unarchive:
+    src: "{{ install_caddy_home }}/caddy.tar.gz"
+    dest: "{{ install_caddy_home }}"
+    mode: 0644
+    remote_src: true
+    owner: "{{ install_caddy_user }}"
+    group: "{{ __caddy_user.group }}"
+  notify: Copy Caddy binary
+
+- name: Copy Caddy binary
+  ansible.builtin.copy:
+    src: "{{ install_caddy_home }}/caddy"
+    dest: /usr/local/bin/caddy
+    force: true
+    mode: 0755
+    remote_src: true
+  notify: Delete Caddy downloads
+
+- name: Delete Caddy downloads
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ install_caddy_home }}/caddy"
+    - "{{ install_caddy_home }}/caddy.tar.gz"
+
+- name: Reload caddy
+  ansible.builtin.systemd_service:
+    name: caddy
+    state: reloaded
+    enabled: true
+    daemon_reload: true
+
+- name: Restart caddy
+  ansible.builtin.systemd_service:
+    name: caddy
+    state: restarted
+    enabled: true
+    daemon_reload: true

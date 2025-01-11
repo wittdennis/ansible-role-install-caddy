@@ -1,0 +1,75 @@
+{{ ansible_managed | comment(decoration="; ") }}
+
+[Unit]
+Description=Caddy HTTP/3 web server
+Documentation=https://caddyserver.com/docs
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+{% if install_caddy_systemd_version | int >= 230 %}
+StartLimitIntervalSec={{ install_caddy_systemd_restart_startlimitinterval }}
+StartLimitBurst={{ install_caddy_systemd_restart_startlimitburst }}
+{% endif %}
+
+[Service]
+Restart={{ install_caddy_systemd_restart }}
+{% if install_caddy_systemd_version | int < 230 %}
+StartLimitInterval={{ install_caddy_systemd_restart_startlimitinterval }}
+StartLimitBurst={{ install_caddy_systemd_restart_startlimitburst }}
+{% endif %}
+
+; User and group the process will run as.
+User={{ install_caddy_user }}
+Group={{ __caddy_user.group }}
+
+; Letsencrypt-issued certificates will be written to this directory.
+Environment=CADDYPATH=/etc/ssl/caddy
+
+ExecStart="/usr/local/bin/caddy" run --environ --config "/etc/caddy/Caddyfile" {{ install_caddy_additional_args }}
+ExecReload="/usr/local/bin/caddy" reload --config "/etc/caddy/Caddyfile"
+
+; Limit the number of file descriptors; see `man systemd.exec` for more limit settings.
+LimitNOFILE=1048576
+{% if install_caddy_number_of_threads > 0 %}
+; Limit the number of caddy threads.
+LimitNPROC={{ install_install_caddy_number_of_threads }}
+{% endif %}
+
+; Use private /tmp and /var/tmp, which are discarded after caddy stops.
+PrivateTmp=true
+; Use a minimal /dev
+PrivateDevices=true
+; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.
+ProtectHome=true
+; Make /usr, /boot, /etc and possibly some more folders read-only.
+ProtectSystem=full
+; ... except /etc/ssl/caddy, because we want Letsencrypt-certificates there.
+;   This merely retains r/w access rights, it does not add any new. Must still be writable on the host!
+ReadWriteDirectories=/etc/ssl/caddy /var/log/caddy
+
+; The following additional security directives only work with systemd v229 or later.
+; They further retrict privileges that can be gained by caddy.
+; Note that you may have to add capabilities required by any plugins in use.
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+
+{% if install_caddy_environment_variables|length %}
+
+; Additional environment variables:
+
+{% for key, value in install_caddy_environment_variables.items() %}
+Environment={{ key }}={{ value }}
+{% endfor %}
+
+{% endif %}
+{% if install_caddy_environment_files|length %}
+
+; Additional environment files:
+
+{% for path in install_caddy_environment_files %}
+EnvironmentFile={{ path }}
+{% endfor %}
+
+{% endif %}
+[Install]
+WantedBy=multi-user.target
