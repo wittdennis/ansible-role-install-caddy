@@ -1,0 +1,8 @@
+---
+- name: Set Caddy urls
+  ansible.builtin.set_fact:
+    caddy_download_url: "{{ install_caddy_github_base_url }}/releases/download/\
+      {{ install_caddy_version }}/caddy_{{ install_caddy_version[1:] }}_{{ install_caddy_os }}_{{ go_arch }}.tar.gz"
+    caddy_checksum_url:
+      "sha512:{{ install_caddy_github_base_url }}/releases/download/\
+      {{ install_caddy_version }}/caddy_{{ install_caddy_version[1:] }}_checksums.txt"

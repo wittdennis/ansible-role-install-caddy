@@ -11,3 +11,96 @@
           - "ansible_distribution_major_version => {{ ansible_distribution_major_version }}"
           - "ansible_os_family  => {{ ansible_os_family }}"
           - "ansible_system  => {{ ansible_system }}"
+
+    - name: Gather user db
+      ansible.builtin.getent:
+        database: passwd
+
+    - name: Gather group db
+      ansible.builtin.getent:
+        database: group
+
+    - name: Stat home dir
+      ansible.builtin.stat:
+        path: /home/test-dir
+      register: __home_dir
+
+    - name: Homedir should exists
+      ansible.builtin.assert:
+        that:
+          - __home_dir.stat.isdir is defined
+          - __home_dir.stat.exists
+
+    - name: Stat caddy bin
+      ansible.builtin.stat:
+        path: /usr/local/bin/caddy
+      register: __caddy_bin
+
+    - name: Get Version of Caddy # noqa: risky-shell-pipe
+      ansible.builtin.shell:
+        cmd: |
+          /usr/local/bin/caddy -v | cut -d " " -f 1
+      changed_when: false
+      failed_when: false
+      register: __caddy_version_test
+
+    - name: Caddy in correct version should be present
+      ansible.builtin.assert:
+        that:
+          - __caddy_bin.stat.exists
+          - __caddy_bin.stat.executable
+          - __caddy_version_test.stdout == "v2.9.1" # renovate: datasource=github-releases depName=caddyserver/caddy versioning=semver
+
+    - name: Stat caddy conf dir
+      ansible.builtin.stat:
+        path: /etc/caddy
+      register: __etc_caddy
+
+    - name: Stat caddy certs dir
+      ansible.builtin.stat:
+        path: /etc/ssl/caddy
+      register: __etc_ssl_caddy
+
+    - name: Caddy config dir should exist
+      ansible.builtin.assert:
+        that:
+          - __etc_caddy.stat.exists
+          - __etc_caddy.stat.isdir
+
+    - name: Caddy ssl dir should exist
+      ansible.builtin.assert:
+        that:
+          - __etc_ssl_caddy.stat.exists
+          - __etc_ssl_caddy.stat.isdir
+
+    - name: Stat Caddyfile
+      ansible.builtin.stat:
+        path: /etc/caddy/Caddyfile
+      register: __etc_caddy_caddyfile
+
+    - name: Caddyfile should exist
+      ansible.builtin.assert:
+        that:
+          - __etc_caddy_caddyfile.stat.exists
+
+    - name: Stat service file
+      ansible.builtin.stat:
+        path: /etc/systemd/system/caddy.service
+      register: __caddy_service_file
+
+    - name: Systemd service unit should exist
+      ansible.builtin.assert:
+        that:
+          - __caddy_service_file.stat.exists
+
+    - name: Caddy systemd service
+      ansible.builtin.systemd_service:
+        name: caddy
+      register: __caddy_service
+
+    - name: Caddy service should be started
+      ansible.builtin.assert:
+        that:
+          - __caddy_service.status["ActiveState"] == "active"
+          - __caddy_service.status["Result"] == "success"
+          - __caddy_service.status["UnitFileState"] == "enabled"
