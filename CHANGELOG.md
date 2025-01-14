@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.0.0 - 2025-01-14
+#### Bug Fixes
+- set octal permissions explicitly - (0c067da) - Dennis Witt
+
+- - -
+
 ## 0.1.0 - 2025-01-14
 #### Features
 - manage caddy with ansible role - (b0483f6) - Dennis Witt
