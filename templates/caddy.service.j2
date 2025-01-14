@@ -6,23 +6,20 @@ Documentation=https://caddyserver.com/docs
 After=network-online.target
 Wants=network-online.target systemd-networkd-wait-online.service
 {% if install_caddy_systemd_version | int >= 230 %}
-StartLimitIntervalSec={{ install_caddy_systemd_restart_startlimitinterval }}
-StartLimitBurst={{ install_caddy_systemd_restart_startlimitburst }}
+StartLimitIntervalSec={{ install_caddy_restart_interval }}
+StartLimitBurst={{ install_caddy_max_number_restarts }}
 {% endif %}
 
 [Service]
-Restart={{ install_caddy_systemd_restart }}
+Restart={{ install_caddy_restart_mode }}
+RestartSec={{ install_caddy_restart_wait_sec }}
 {% if install_caddy_systemd_version | int < 230 %}
-StartLimitInterval={{ install_caddy_systemd_restart_startlimitinterval }}
-StartLimitBurst={{ install_caddy_systemd_restart_startlimitburst }}
+StartLimitInterval={{ install_caddy_restart_interval }}
+StartLimitBurst={{ install_caddy_max_number_restarts }}
 {% endif %}
 
-; User and group the process will run as.
 User={{ install_caddy_user }}
 Group={{ __caddy_user.group }}
-
-; Letsencrypt-issued certificates will be written to this directory.
-Environment=CADDYPATH=/etc/ssl/caddy
 
 ExecStart="/usr/local/bin/caddy" run --environ --config "/etc/caddy/Caddyfile" {{ install_caddy_additional_args }}
 ExecReload="/usr/local/bin/caddy" reload --config "/etc/caddy/Caddyfile"
@@ -34,17 +31,11 @@ LimitNOFILE=1048576
 LimitNPROC={{ install_install_caddy_number_of_threads }}
 {% endif %}
 
-; Use private /tmp and /var/tmp, which are discarded after caddy stops.
 PrivateTmp=true
-; Use a minimal /dev
 PrivateDevices=true
-; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.
 ProtectHome=true
-; Make /usr, /boot, /etc and possibly some more folders read-only.
 ProtectSystem=full
-; ... except /etc/ssl/caddy, because we want Letsencrypt-certificates there.
-;   This merely retains r/w access rights, it does not add any new. Must still be writable on the host!
-ReadWriteDirectories=/etc/ssl/caddy /var/log/caddy
+ReadWriteDirectories=/var/lib/caddy /var/log/caddy
 
 ; The following additional security directives only work with systemd v229 or later.
 ; They further retrict privileges that can be gained by caddy.
@@ -60,8 +51,8 @@ NoNewPrivileges=true
 {% for key, value in install_caddy_environment_variables.items() %}
 Environment={{ key }}={{ value }}
 {% endfor %}
-
 {% endif %}
+
 {% if install_caddy_environment_files|length %}
 
 ; Additional environment files:
