@@ -3,7 +3,7 @@
   ansible.builtin.unarchive:
     src: "{{ install_caddy_home }}/caddy.tar.gz"
     dest: "{{ install_caddy_home }}"
-    mode: 0644
+    mode: "0644"
     remote_src: true
     owner: "{{ install_caddy_user }}"
     group: "{{ __caddy_user.group }}"
@@ -14,7 +14,7 @@
     src: "{{ install_caddy_home }}/caddy"
     dest: /usr/local/bin/caddy
     force: true
-    mode: 0755
+    mode: "0755"
     remote_src: true
   notify: Delete Caddy downloads
 

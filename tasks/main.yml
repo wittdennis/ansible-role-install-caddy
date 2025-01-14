@@ -38,7 +38,7 @@
     checksum: "{{ caddy_checksum_url | default(omit) }}"
     dest: "{{ install_caddy_home }}/caddy.tar.gz"
     force: true
-    mode: 0644
+    mode: "0644"
     owner: "{{ install_caddy_user }}"
     group: "{{ __caddy_user.group }}"
   retries: 3
@@ -54,7 +54,7 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ install_caddy_user }}"
-    mode: 0770
+    mode: "0770"
   loop:
     - /etc/caddy
     - /etc/ssl/caddy
@@ -71,7 +71,7 @@
     content: "{{ install_caddy_caddyfile }}"
     dest: /etc/caddy/Caddyfile
     owner: "{{ install_caddy_user }}"
-    mode: 0640
+    mode: "0640"
   notify: Reload caddy
 
 - name: Template systemd service
@@ -80,7 +80,7 @@
     dest: /etc/systemd/system/caddy.service
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart caddy
 
 - name: Start Caddy service
