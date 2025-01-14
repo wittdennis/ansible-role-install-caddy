@@ -54,10 +54,10 @@
     path: "{{ item }}"
     state: directory
     owner: "{{ install_caddy_user }}"
-    mode: "0770"
+    mode: "0750"
   loop:
     - /etc/caddy
-    - /etc/ssl/caddy
+    - /var/lib/caddy
 
 - name: Set capability on caddy binary to use port < 1024 # noqa: no-handler
   when: __caddy_download.changed
@@ -71,12 +71,13 @@
     content: "{{ install_caddy_caddyfile }}"
     dest: /etc/caddy/Caddyfile
     owner: "{{ install_caddy_user }}"
+    group: "{{ __caddy_user.group }}"
     mode: "0640"
   notify: Reload caddy
 
 - name: Template systemd service
   ansible.builtin.template:
-    src: caddy.service
+    src: caddy.service.j2
     dest: /etc/systemd/system/caddy.service
     owner: root
     group: root
