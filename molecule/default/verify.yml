@@ -56,22 +56,11 @@
         path: /etc/caddy
       register: __etc_caddy
 
-    - name: Stat caddy certs dir
-      ansible.builtin.stat:
-        path: /etc/ssl/caddy
-      register: __etc_ssl_caddy
-
     - name: Caddy config dir should exist
       ansible.builtin.assert:
         that:
           - __etc_caddy.stat.exists
           - __etc_caddy.stat.isdir
-
-    - name: Caddy ssl dir should exist
-      ansible.builtin.assert:
-        that:
-          - __etc_ssl_caddy.stat.exists
-          - __etc_ssl_caddy.stat.isdir
 
     - name: Stat Caddyfile
       ansible.builtin.stat:
