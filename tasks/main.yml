@@ -58,6 +58,7 @@
   loop:
     - /etc/caddy
     - /var/lib/caddy
+    - /var/log/caddy
 
 - name: Set capability on caddy binary to use port < 1024 # noqa: no-handler
   when: __caddy_download.changed
