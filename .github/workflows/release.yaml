@@ -7,4 +7,4 @@ jobs:
   release:
     uses: wittdennis/pipelines/.github/workflows/cog-release.yaml@1.11.14
     secrets:
-      release-token: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
+      release-token: ${{ secrets.RELEASE_TOKEN }}
