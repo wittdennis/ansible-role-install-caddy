@@ -2,6 +2,21 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.2.0 - 2025-04-19
+#### Continuous Integration
+- **(deps)** update pipeline to 1.11.14 - (e2583ca) - Dennis Witt
+- use correct token for release - (9f8a71a) - Dennis Witt
+- change to use reusable workflows - (f7edaa5) - Dennis Witt
+#### Features
+- set udp buffer size to enable http3 support - (4e968ba) - Dennis Witt
+#### Tests
+- **(fix)** assert of caddy version - (488059e) - Dennis Witt
+- **(fix)** set correct role path for molecule - (5427ddf) - Dennis Witt
+- skip sysctl tasks as they are not testable - (015f216) - Dennis Witt
+- remove etc/ssl/caddy dir check - (1c8c239) - Dennis Witt
+
+- - -
+
 ## 1.1.0 - 2025-01-25
 #### Continuous Integration
 - use pipeline shared template for ansible lint - (9da4d6a) - Dennis Witt
