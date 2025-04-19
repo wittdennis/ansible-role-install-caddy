@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.2.1 - 2025-04-19
+#### Bug Fixes
+- **(deps)** update dependency caddyserver/caddy to v2.10.0 - (605ec90) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.2.0 - 2025-04-19
 #### Continuous Integration
 - **(deps)** update pipeline to 1.11.14 - (e2583ca) - Dennis Witt
