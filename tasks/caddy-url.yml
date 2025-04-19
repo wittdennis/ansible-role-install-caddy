@@ -1,3 +1,4 @@
+# code: language=ansible
 ---
 - name: Set Caddy urls
   ansible.builtin.set_fact:

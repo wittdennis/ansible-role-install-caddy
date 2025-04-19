@@ -1,3 +1,4 @@
+# code: language=ansible
 ---
 - name: Include tasks for pre-setup checks
   ansible.builtin.include_tasks:
@@ -66,6 +67,24 @@
     path: "/usr/local/bin/caddy"
     capability: cap_net_bind_service+eip
     state: present
+
+- name: Set buffer size for HTTP3 support
+  block:
+    - name: Set rmem_max
+      ansible.posix.sysctl:
+        name: net.core.rmem_max
+        value: "7500000"
+        state: present
+        sysctl_set: true
+        reload: true
+
+    - name: Set wmem_max
+      ansible.posix.sysctl:
+        name: net.core.wmem_max
+        value: "7500000"
+        state: present
+        sysctl_set: true
+        reload: true
 
 - name: Create caddy config
   ansible.builtin.copy:
