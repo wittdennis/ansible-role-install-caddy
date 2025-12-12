@@ -2,15 +2,17 @@
 ---
 - name: Assert usage of systemd as an init system
   ansible.builtin.assert:
-    that: ansible_facts['service_mgr'] == 'systemd'
-    fail_msg: "This module only works with systemd"
+    that: ansible_facts['service_mgr'] == 'systemd' or ansible_facts['service_mgr'] == 'openrc'
+    fail_msg: "This module only works with systemd or openrc"
 
 - name: Get systemd version
+  when: ansible_facts['service_mgr'] == "systemd"
   ansible.builtin.command: systemctl --version
   changed_when: false
   check_mode: false
   register: __systemd_version
 
 - name: Set systemd version fact
+  when: ansible_facts['service_mgr'] == "systemd"
   ansible.builtin.set_fact:
     install_caddy_systemd_version: "{{ __systemd_version.stdout_lines[0].split(' ')[1] }}"
