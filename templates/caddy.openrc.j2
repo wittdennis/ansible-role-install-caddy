@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+{{ ansible_managed | comment(decoration="# ") }}
+
+supervisor=supervise-daemon
+
+name="Caddy HTTP/3 web server"
+description="Fast, multi-platform web server with automatic HTTPS"
+description_checkconfig="Check configuration"
+description_reload="Reload configuration without downtime"
+
+command=/usr/local/bin/caddy
+command_args="run --environ --config /etc/caddy/Caddyfile {{ install_caddy_additional_args }}"
+command_user="{{ install_caddy_user }}:{{ __caddy_user.group }}"
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+depend() {
+    need net localmount
+    after firewall
+}
+
+checkconfig() {
+    ebegin "Checking configuration for $name"
+    su ${command_user%:*} -s /bin/sh -c "$command validate $caddy_opts"
+    eend $?
+}
+
+reload() {
+    ebegin "Reloading $name"
+    su ${command_user%:*} -s /bin/sh -c "$command reload $caddy_opts"
+    eend $?
+}
+
+stop_pre() {
+    if [ "$RC_CMD" = restart ]; then
+            checkconfig || return $?
+    fi
+}

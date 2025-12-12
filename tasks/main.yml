@@ -9,12 +9,14 @@
     file: caddy-url.yml
 
 - name: Create group
+  become: true
   ansible.builtin.group:
     name: "{{ install_caddy_user }}"
     system: true
     state: present
 
 - name: Create Caddy user
+  become: true
   ansible.builtin.user:
     name: "{{ install_caddy_user }}"
     system: true
@@ -33,6 +35,7 @@
   register: __caddy_version
 
 - name: Download Caddy
+  become: true
   when: __caddy_version.stdout != install_caddy_version or install_caddy_force_update
   ansible.builtin.get_url:
     url: "{{ caddy_download_url }}"
@@ -51,6 +54,7 @@
   ansible.builtin.meta: flush_handlers
 
 - name: Create directories
+  become: true
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -62,6 +66,7 @@
     - /var/log/caddy
 
 - name: Set capability on caddy binary to use port < 1024 # noqa: no-handler
+  become: true
   when: __caddy_download.changed
   community.general.capabilities:
     path: "/usr/local/bin/caddy"
@@ -70,6 +75,7 @@
 
 - name: Set buffer size for HTTP3 support
   tags: notest
+  become: true
   block:
     - name: Set rmem_max
       ansible.posix.sysctl:
@@ -88,6 +94,7 @@
         reload: true
 
 - name: Create caddy config
+  become: true
   ansible.builtin.copy:
     content: "{{ install_caddy_caddyfile }}"
     dest: /etc/caddy/Caddyfile
@@ -97,6 +104,8 @@
   notify: Reload caddy
 
 - name: Template systemd service
+  when: ansible_facts['service_mgr'] == "systemd"
+  become: true
   ansible.builtin.template:
     src: caddy.service.j2
     dest: /etc/systemd/system/caddy.service
@@ -106,8 +115,29 @@
   notify: Restart caddy
 
 - name: Start Caddy service
+  when: ansible_facts['service_mgr'] == "systemd"
+  become: true
   ansible.builtin.systemd_service:
     name: caddy
     state: started
     enabled: true
     daemon_reload: true
+
+- name: Template openrc service
+  when: ansible_facts['service_mgr'] == "openrc"
+  become: true
+  ansible.builtin.template:
+    src: caddy.openrc.j2
+    dest: /etc/init.d/caddy
+    owner: root
+    group: root
+    mode: "0744"
+  notify: Restart caddy
+
+- name: Start Caddy service
+  when: ansible_facts['service_mgr'] == "openrc"
+  become: true
+  ansible.builtin.service:
+    name: caddy
+    state: started
+    enabled: true

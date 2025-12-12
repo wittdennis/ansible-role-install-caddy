@@ -1,5 +1,7 @@
+# code: language=ansible
 ---
 - name: Extract Caddy
+  become: true
   ansible.builtin.unarchive:
     src: "{{ install_caddy_home }}/caddy.tar.gz"
     dest: "{{ install_caddy_home }}"
@@ -10,6 +12,7 @@
   notify: Copy Caddy binary
 
 - name: Copy Caddy binary
+  become: true
   ansible.builtin.copy:
     src: "{{ install_caddy_home }}/caddy"
     dest: /usr/local/bin/caddy
@@ -19,6 +22,7 @@
   notify: Delete Caddy downloads
 
 - name: Delete Caddy downloads
+  become: true
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
@@ -27,6 +31,7 @@
     - "{{ install_caddy_home }}/caddy.tar.gz"
 
 - name: Reload caddy
+  when: ansible_facts['service_mgr'] == "systemd"
   ansible.builtin.systemd_service:
     name: caddy
     state: reloaded
@@ -34,8 +39,16 @@
     daemon_reload: true
 
 - name: Restart caddy
+  when: ansible_facts['service_mgr'] == "systemd"
   ansible.builtin.systemd_service:
     name: caddy
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Restart caddy
+  when: ansible_facts['service_mgr'] == "openrc"
+  become: true
+  ansible.builtin.service:
+    name: caddy
+    state: restarted
