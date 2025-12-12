@@ -2,6 +2,45 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.3.0 - 2025-12-12
+#### Features
+- support openrc init system - (e69fba9) - Dennis Witt
+#### Bug Fixes
+- don't use auto injected variables - (95e636b) - Dennis Witt
+#### Miscellaneous Chores
+- (**deps**) update wittdennis/pipelines action to v1.13.1 - (b27f6a1) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.12.1 - (fa2c759) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.0 - (e6ce035) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.11 - (6c1808c) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.10 - (95225e6) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.12.0 - (d783a9b) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.11.1 - (93e9c9f) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.9 - (e804f68) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.8 - (c75f03e) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.11.0 - (253d1d9) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.7 - (17b1551) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.6 - (0cd26c8) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.5 - (0218a4d) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.4 - (d52d8a5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.3 - (e094abd) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.2 - (870be44) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.12.1 - (d8737a5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.46 - (f714c82) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.9.2 - (9acdc06) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.45 - (79e1604) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.44 - (6014ae3) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.9.1 - (b481ff1) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.42 - (f96f62f) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.40 - (24e7033) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.39 - (97087ba) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.9.0 - (032bf64) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.38 - (281b71b) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.37 - (8527ad5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.36 - (1a1b887) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.11.35 - (f0069ea) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.2.2 - 2025-08-25
 #### Bug Fixes
 - **(deps)** update dependency caddyserver/caddy to v2.10.2 - (29b7fa8) - wittdennis-renovate[bot]
