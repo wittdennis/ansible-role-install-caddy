@@ -1,7 +1,7 @@
 ---
 install_caddy_user: www-data
 install_caddy_home: /home/caddy
-install_caddy_version: v2.10.2 # renovate: datasource=github-releases depName=caddyserver/caddy versioning=semver
+install_caddy_version: v2.11.1 # renovate: datasource=github-releases depName=caddyserver/caddy versioning=semver
 install_caddy_github_base_url: "https://github.com/caddyserver/caddy"
 install_caddy_force_update: false # Set to true to always re-download caddy regardless if version matches or not
 install_caddy_os: linux

@@ -5,6 +5,6 @@
   vars:
     install_caddy_user: test-user
     install_caddy_home: /home/test-dir
-    install_caddy_version: v2.10.2 # renovate: datasource=github-releases depName=caddyserver/caddy versioning=semver
+    install_caddy_version: v2.11.1 # renovate: datasource=github-releases depName=caddyserver/caddy versioning=semver
   roles:
     - { role: ansible-role-install-caddy } # noqa: syntax-check[specific]
