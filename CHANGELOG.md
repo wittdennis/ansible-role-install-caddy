@@ -2,6 +2,25 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.3.1 - 2026-02-23
+#### Bug Fixes
+- (**deps**) update dependency caddyserver/caddy to v2.11.1 - (03f0aed) - wittdennis-renovate[bot]
+#### Miscellaneous Chores
+- (**deps**) update wittdennis/pipelines action to v1.13.11 - (b7c5066) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.9 - (4e73e08) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.8 - (a49c457) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.7 - (893257a) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.6 - (ce270d7) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.1.1 - (56d1df6) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.5 - (1c9c1e3) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.4 - (b93520d) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26 - (3e13f25) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.3 - (66eb198) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v25.12.2 - (aaa2088) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.2 - (f60e175) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.3.0 - 2025-12-12
 #### Features
 - support openrc init system - (e69fba9) - Dennis Witt
