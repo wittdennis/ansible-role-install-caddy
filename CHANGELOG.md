@@ -2,6 +2,20 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.3.2 - 2026-03-06
+#### Bug Fixes
+- (**deps**) update dependency caddyserver/caddy to v2.11.2 - (be4be6b) - wittdennis-renovate[bot]
+#### Continuous Integration
+- fix monorepo setting for cog - (1165438) - Dennis Witt
+#### Miscellaneous Chores
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.3.0 - (99bc61b) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.14 - (4ba3de0) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.13 - (c2a3aca) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v1.13.12 - (6c259d2) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.2.0 - (6aafddd) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.3.1 - 2026-02-23
 #### Bug Fixes
 - (**deps**) update dependency caddyserver/caddy to v2.11.1 - (03f0aed) - wittdennis-renovate[bot]
