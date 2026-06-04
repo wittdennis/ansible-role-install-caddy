@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.3.4 - 2026-06-04
+#### Bug Fixes
+- (**deps**) update dependency caddyserver/caddy to v2.11.4 - (0d7985b) - wittdennis-renovate[bot]
+#### Miscellaneous Chores
+- (**deps**) update wittdennis/pipelines action to v2.0.23 - (45c619f) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.22 - (a0addb5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.20 - (d5af031) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.19 - (ba98649) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.18 - (67673e0) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.17 - (accbf22) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.3.3 - 2026-05-13
 #### Bug Fixes
 - (**deps**) update dependency caddyserver/caddy to v2.11.3 - (83c832a) - wittdennis-renovate[bot]
