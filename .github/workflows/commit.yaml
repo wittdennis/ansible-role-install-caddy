@@ -4,6 +4,6 @@ on: [push]
 
 jobs:
   conventional-compliance:
-    uses: wittdennis/pipelines/.github/workflows/cog-validate.yaml@767c74fb5809ef0cd9fc398630d5d21d81532faa # 2.0.37
+    uses: wittdennis/pipelines/.github/workflows/cog-validate.yaml@c6718b5723b2e69baff45a33d27313f326954b3a # 2.0.39
     with:
       check-latest-tag-only: false
