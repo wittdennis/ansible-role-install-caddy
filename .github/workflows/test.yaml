@@ -1,5 +1,3 @@
-# tests failing cause of systemd and containers
-
 name: test
 
 on: [pull_request]
