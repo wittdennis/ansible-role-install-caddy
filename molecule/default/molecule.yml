@@ -25,6 +25,12 @@ platforms:
 provisioner:
   name: ansible
   log: true
+  # Connect as root so become is a no-op. Under rootless podman (CI) sudo's PAM
+  # account management fails on RHEL-family images; avoiding sudo sidesteps it.
+  inventory:
+    group_vars:
+      all:
+        ansible_user: root
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   env:
