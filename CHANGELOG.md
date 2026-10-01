@@ -2,6 +2,48 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.3.5 - 2026-10-01
+#### Bug Fixes
+- (**deps**) update dependency caddyserver/caddy to v2.11.6 - (4075da8) - wittdennis-renovate[bot]
+#### Tests
+- fix molecule test for rocky - (c87f465) - Dennis Witt
+#### Continuous Integration
+- (**deps**) update wittdennis/pipelines action to v2.0.60 - (7b90b32) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.59 - (822d376) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.58 - (bab03c5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.57 - (76972f5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.56 - (ee69ac1) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.54 - (ee559e8) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.53 - (dc45dd8) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.52 - (8d3d68d) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.50 - (f31af1d) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.49 - (f494b8e) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.48 - (7cffd73) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.47 - (e26a311) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.46 - (6d5dceb) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.45 - (bdd8b69) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.44 - (f336ba1) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.43 - (c814c32) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.42 - (ffdeeeb) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.41 - (14c36a6) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.40 - (985a4bc) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.39 - (3b83dd1) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.37 - (3db213e) - wittdennis-renovate[bot]
+#### Miscellaneous Chores
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.9.0 - (70719f8) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.8.0 - (26a87c2) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.36 - (a7256f5) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.35 - (0a81421) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.34 - (b0a3ef1) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.32 - (1e8f938) - wittdennis-renovate[bot]
+- (**deps**) update pre-commit hook ansible-community/ansible-lint to v26.6.0 - (6159635) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.28 - (c9c0898) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.26 - (4e01157) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.25 - (4d53158) - wittdennis-renovate[bot]
+- (**deps**) update wittdennis/pipelines action to v2.0.24 - (d6bf082) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.3.4 - 2026-06-04
 #### Bug Fixes
 - (**deps**) update dependency caddyserver/caddy to v2.11.4 - (0d7985b) - wittdennis-renovate[bot]
