@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 1.3.6 - 2026-10-05
+#### Bug Fixes
+- (**deps**) update dependency caddyserver/caddy to v2.11.7 - (f70d966) - wittdennis-renovate[bot]
+
+- - -
+
 ## 1.3.5 - 2026-10-01
 #### Bug Fixes
 - (**deps**) update dependency caddyserver/caddy to v2.11.6 - (4075da8) - wittdennis-renovate[bot]
